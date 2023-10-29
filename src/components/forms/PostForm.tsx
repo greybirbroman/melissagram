@@ -22,9 +22,10 @@ import { useCreatePost } from '@/lib/react-query/queries';
 
 type PostFormProps = {
   post?: Models.Document;
+  action: 'create' | 'update'
 };
 
-const PostForm = ({ post }: PostFormProps) => {
+const PostForm = ({ post, action }: PostFormProps) => {
   const navigate = useNavigate()
   const { user } = useUserContext();
   const { toast } = useToast();

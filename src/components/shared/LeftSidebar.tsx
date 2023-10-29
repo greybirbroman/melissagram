@@ -10,7 +10,7 @@ const LeftSidebar = () => {
   const { mutate: signOut, isSuccess } = useSignOutAccount();
   const { user } = useUserContext();
   const { pathname } = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isSuccess) {
@@ -40,6 +40,7 @@ const LeftSidebar = () => {
             <p className='small-regular text-light-3'>@{user.username}</p>
           </div>
         </Link>
+
         <ul className='flex flex-col gap-6'>
           {sidebarLinks.map((link: INavLink) => {
             const isActive = pathname === link.route;
