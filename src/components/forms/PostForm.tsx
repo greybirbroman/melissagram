@@ -18,18 +18,22 @@ import { PostValidation } from '@/lib/validation';
 import { Models } from 'appwrite';
 import { useUserContext } from '@/context/AuthContext';
 import { useToast } from '../ui/use-toast';
-import { useCreatePost } from '@/lib/react-query/queries';
+import { useCreatePost, useUpdatePost } from '@/lib/react-query/queries';
+import { POSTS } from '@/constants/routes';
 
 type PostFormProps = {
   post?: Models.Document;
-  action: 'create' | 'update'
+  action: 'create' | 'update';
 };
 
 const PostForm = ({ post, action }: PostFormProps) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { user } = useUserContext();
   const { toast } = useToast();
-  const { mutateAsync: createPost, isPending } = useCreatePost();
+  const { mutateAsync: createPost, isPending: isCreatingPost } =
+    useCreatePost();
+  const { mutateAsync: updatePost, isPending: isUpdatingPost } =
+    useUpdatePost();
 
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
@@ -42,16 +46,29 @@ const PostForm = ({ post, action }: PostFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof PostValidation>) {
+    if (post && action === 'update') {
+      const updatedPost = await updatePost({
+        ...values,
+        postId: post.$id,
+        imageId: post.imageId,
+        imageUrl: post.imageUrl,
+      });
+
+      if (!updatedPost) {
+        toast({ title: 'Updating error... Please try again.' });
+      }
+      return navigate(`/${POSTS}/${post.$id}`);
+    }
     const newPost = await createPost({
       ...values,
       userId: user.id,
     });
     if (!newPost) {
       return toast({
-        title: 'Something goes wrong... Please try again.',
+        title: 'Creating new post error... Please try again.',
       });
     }
-    navigate('/')
+    navigate('/');
   }
 
   return (
@@ -83,7 +100,10 @@ const PostForm = ({ post, action }: PostFormProps) => {
             <FormItem>
               <FormLabel className='shad-form_label'>Add Photos</FormLabel>
               <FormControl>
-                <FileUploader fieldChange={field.onChange} mediaUrl={post?.imageUrl} />
+                <FileUploader
+                  fieldChange={field.onChange}
+                  mediaUrl={post?.imageUrl}
+                />
               </FormControl>
               <FormMessage className='shad-form_message' />
             </FormItem>
@@ -128,9 +148,11 @@ const PostForm = ({ post, action }: PostFormProps) => {
           </Button>
           <Button
             type='submit'
-            className='shad-button_primary whitespace-nowrap'
+            className='shad-button_primary whitespace-nowrap capitalize'
+            disabled={isUpdatingPost || isCreatingPost}
           >
-            Submit
+            {isUpdatingPost || isCreatingPost ? 'Loading...' : `${action} Post`}
+            {/* {action} Post */}
           </Button>
         </div>
       </form>

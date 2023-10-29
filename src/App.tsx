@@ -28,7 +28,7 @@ const App = () => {
           <Route path={`/${ALL_USERS}`} element={<AllUsers />} />
           <Route path={`/${CREATE_POST}`} element={<CreatePost />} />
           <Route path={`/${UPDATE_POST}/:id`} element={<EditPost />} />
-          <Route path={`/${POSTS}:id`} element={<PostDetails />} />
+          <Route path={`/${POSTS}/:id`} element={<PostDetails />} />
           <Route path={`/${PROFILE}/:id/*`} element={<Profile />} />
           <Route path={`/${UPDATE_PROFILE}/:id`} element={<UpdateProfile />} />
         </Route>

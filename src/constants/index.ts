@@ -1,3 +1,17 @@
+import defaultAvatar from '../../public/assets/icons/profile-placeholder.svg';
+import editIcon from '../../public/assets/icons/edit.svg';
+import deleteIcon from '../../public/assets/icons/delete.svg';
+
+const editIconObj = {
+  icon: editIcon,
+  alt: 'Edit Post, Icon'
+}
+
+const deleteIconObj = {
+  icon: deleteIcon,
+  alt: 'Delete Post, Icon'
+}
+
 export const sidebarLinks = [
   {
     imgURL: '/assets/icons/home.svg',
@@ -48,3 +62,5 @@ export const bottombarLinks = [
     label: "Create",
   },
 ];
+
+export {defaultAvatar, editIconObj, deleteIconObj}
