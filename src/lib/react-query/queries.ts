@@ -20,6 +20,8 @@ import {
   getPostById,
   updatePost,
   deletePost,
+  getInfinitePosts,
+  searchPosts,
 } from '../appwrite/postsApi';
 import { QUERY_KEYS } from './queryKeys';
 import { INewUser, INewPost, IUpdatePost } from '@/types';
@@ -167,5 +169,26 @@ export const useDeletePost = () => {
         queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
       })
     }
+  })
+}
+
+export const useGetPosts = () => {
+  return useInfiniteQuery({
+    queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
+    queryFn: getInfinitePosts,
+    getNextPageParam: (lastPage) => {
+      if(lastPage && lastPage.documents.length === 0) return null;
+
+      const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id
+      return lastId
+    }
+  })
+}
+
+export const useSearchPosts = (searchQuery: string) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.SEARCH_POSTS],
+    queryFn: () => searchPosts(searchQuery),
+    enabled: !!searchQuery
   })
 }

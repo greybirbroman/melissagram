@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Models } from 'appwrite';
-import { defaultAvatar } from '@/constants';
-import editIcon from '../../../public/assets/icons/edit.svg';
+import { defaultAvatar, editIconObj } from '@/constants';
 import { multiFormatDateString } from '@/lib/utils';
 import { UPDATE_POST, POSTS, PROFILE } from '@/constants/routes';
 import { useUserContext } from '@/context/AuthContext';
@@ -46,7 +45,7 @@ const PostCard = ({ post }: PostCardProps) => {
           to={`${UPDATE_POST}/${post.$id}`}
           className={`${user.id !== post.creator.$id && 'hidden'}`}
         >
-          <img src={editIcon} alt='Edit Post, Icon' width={20} height={20} />
+          <img src={editIconObj.icon} alt={editIconObj.alt} width={20} height={20} />
         </Link>
       </div>
       <Link to={`/${POSTS}/${post.$id}`}>

@@ -1,6 +1,6 @@
-import defaultAvatar from '../../public/assets/icons/profile-placeholder.svg';
-import editIcon from '../../public/assets/icons/edit.svg';
-import deleteIcon from '../../public/assets/icons/delete.svg';
+import defaultAvatar from '/assets/icons/profile-placeholder.svg';
+import editIcon from '/assets/icons/edit.svg';
+import deleteIcon from '/assets/icons/delete.svg';
 
 const editIconObj = {
   icon: editIcon,
@@ -63,4 +63,4 @@ export const bottombarLinks = [
   },
 ];
 
-export {defaultAvatar, editIconObj, deleteIconObj}
+export { defaultAvatar, editIconObj, deleteIconObj }
