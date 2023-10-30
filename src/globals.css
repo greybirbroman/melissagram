@@ -114,7 +114,7 @@
 
   /* All Users */
   .user-container {
-    @apply max-w-5xl flex flex-col items-start w-full gap-6 md:gap-9;
+    @apply max-w-5xl flex flex-col items-start w-full gap-6 md:gap-9 overflow-scroll py-10 px-5 custom-scrollbar;
   }
 
   .user-grid {
@@ -206,7 +206,7 @@
 
   /* Grid Post List */
   .grid-container {
-    @apply w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-7 max-w-5xl;
+    @apply w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-7 max-w-5xl;
   }
 
   .grid-post_link {
@@ -219,7 +219,7 @@
 
    /* Right sidebar */
    .rightsidebar {
-    @apply hidden md:flex px-6 py-10 flex-col justify-between min-w-[270px] bg-dark-2;
+    @apply hidden xl:flex px-6 py-10 flex-col justify-between min-w-[270px] bg-dark-2;
   }
 
   /* Left sidebar */

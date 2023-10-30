@@ -30,7 +30,6 @@ const Explore = () => {
   const shouldShowPosts =
     !shouldShowSearchResults &&
     posts.pages.every((item) => item.documents.length === 0);
-  console.log(posts);
 
   return (
     <div className='explore-container'>
@@ -76,9 +75,12 @@ const Explore = () => {
         ) : shouldShowPosts ? (
           <p className='text-light-4 mt-10 text-center w-full'>End of posts</p>
         ) : (
-          posts.pages.map((item, index) => (
-            <GridPostList key={`page-${index}`} posts={item.documents} />
-          ))
+          posts.pages.map(
+            (item, index) =>
+              item && (
+                <GridPostList key={`page-${index}`} posts={item.documents} />
+              )
+          )
         )}
       </div>
       {hasNextPage && !searchQuery && (
