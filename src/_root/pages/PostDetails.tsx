@@ -1,5 +1,5 @@
-import { useParams, Link } from 'react-router-dom';
-import { useGetPostById } from '@/lib/react-query/queries';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useGetPostById, useDeletePost } from '@/lib/react-query/queries';
 import { useUserContext } from '@/context/AuthContext';
 import Loader from '@/components/shared/Loader';
 import { multiFormatDateString } from '@/lib/utils';
@@ -7,16 +7,27 @@ import { PROFILE, UPDATE_POST } from '@/constants/routes';
 import { defaultAvatar, editIconObj, deleteIconObj } from '@/constants';
 import { Button } from '@/components/ui/button';
 import PostStats from '@/components/shared/PostStats';
+import { toast } from '@/components/ui/use-toast';
 
 const PostDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { user } = useUserContext();
-
+  const { mutate: deletePost } = useDeletePost();
   const { data: post, isPending } = useGetPostById(id || '');
 
-  if (isPending) return <Loader />;
+  if (isPending && !post) return <Loader />;
 
-  const handleDeletePost = () => {};
+  const handleDeletePost = () => {
+    if (id && post?.imageId) {
+      deletePost({ postId: id, imageId: post?.imageId });
+      navigate(-1);
+    } else {
+      return toast({
+        title: 'Deletion failed... Please try again.',
+      });
+    }
+  };
 
   return (
     <div className='post_details-container'>
@@ -96,9 +107,8 @@ const PostDetails = () => {
           </div>
 
           <div className='w-full'>
-            <PostStats post={post} userId={user.id}/>
+            <PostStats post={post} userId={user.id} />
           </div>
-
         </div>
       </div>
     </div>
