@@ -9,7 +9,7 @@ import {
   Outlet,
 } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { PROFILE, UPDATE_PROFILE } from '@/constants/routes';
+import { PROFILE, UPDATE_PROFILE, LIKED_POSTS, SAVED_POSTS } from '@/constants/routes';
 import { editIconObj } from '@/constants';
 import { useUserContext } from '@/context/AuthContext';
 import { useGetUserById } from '@/lib/react-query/queries';
@@ -51,6 +51,7 @@ const Profile = () => {
     if (value === 'liked') navigate(`/${PROFILE}/${id}/liked-posts`);
     if (value === 'saved') navigate(`/${PROFILE}/${id}/saved-posts`);
     if (value === 'all') navigate(`/${PROFILE}/${id}`);
+    else return
   };
 
   const ProfileDynamicButton = () =>
@@ -74,7 +75,7 @@ const Profile = () => {
   return (
     <div className='profile-container'>
       <div className='profile-inner_container'>
-        <UserAvatar imageUrl={currentUser?.imageUrl} size='large' />
+        <UserAvatar imageUrl={currentUser?.imageUrl} size='large' userId={currentUser?.$id}/>
         <div>
           <div className='flex flex-wrap items-center sm:gap-10 gap-2 mb-2'>
             <h2 className='h3-bold md:h2-bold'>{currentUser?.name}</h2>
@@ -126,7 +127,7 @@ const Profile = () => {
           }
         />
         <Route
-          path='/liked-posts'
+          path={`/${LIKED_POSTS}`}
           element={
             <GridPostList
               // title='Liked Posts'
@@ -137,7 +138,7 @@ const Profile = () => {
           }
         />
         <Route
-          path='/saved-posts'
+          path={`/${SAVED_POSTS}`}
           element={
             <GridPostList
               // title='Saved Posts'

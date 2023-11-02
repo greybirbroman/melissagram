@@ -19,7 +19,7 @@ const UserAvatar = ({ userId, imageUrl, size }: IUserAvatar) => {
             ? 'w-[150px] h-[150px]'
             : size === 'medium'
             ? 'h-[100px] w-[100px]'
-            : 'w-12 lg:h-12'
+            : 'w-12 h-12'
         }`}
       />
     </Link>

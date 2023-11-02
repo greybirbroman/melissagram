@@ -25,15 +25,15 @@ const LeftSidebar = () => {
           <img
             src='/assets/images/logo.svg'
             alt='Logo Melissagram, image'
-            width={170}
-            height={36}
+            width={190}
+            height={56}
           />
         </Link>
         <Link to={`/profile/${user.id}`} className='flex gap-3 items-center'>
           <img
             src={user.imageUrl || `/assets/images/profile-placeholder.png`}
             alt='User Avatar, Image'
-            className='w-14 h-14 rounded-full'
+            className='w-14 h-14 rounded-full object-cover'
           />
           <div className='flex flex-col'>
             <p className='body-bold'>{user.name}</p>

@@ -22,7 +22,7 @@ const Saved = () => {
   }
 
   const shouldShowPosts = savedPosts.pages.every(
-    (item) => item.documents.length === 0
+    (item) => item?.documents.length === 0
   );
 
   return (
@@ -34,7 +34,7 @@ const Saved = () => {
             You have no saved posts...
           </p>
         ) : shouldShowPosts ? (
-          <p className='text-light-4 mt-10 text-center w-full'>End of posts</p>
+          <p className='text-light-4 mt-10 text-center w-full'>No more saved posts...</p>
         ) : (
           savedPosts.pages.map(
             (item, index) =>
