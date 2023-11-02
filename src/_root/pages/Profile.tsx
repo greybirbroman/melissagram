@@ -1,11 +1,18 @@
-import React from 'react'
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { PROFILE, UPDATE_PROFILE } from '@/constants/routes';
+import { editIconObj } from '@/constants';
 
 const Profile = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-export default Profile
+
+  return (
+    <Link to={`/${UPDATE_PROFILE}/${id}`}>
+      <Button>edit profile</Button>
+    </Link>
+  );
+};
+
+export default Profile;

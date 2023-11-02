@@ -26,8 +26,8 @@ import {
 } from '../appwrite/postsApi';
 
 import { QUERY_KEYS } from './queryKeys';
-import { INewUser, INewPost, IUpdatePost } from '@/types';
-import { getUsers, getInfiniteUsers } from '../appwrite/usersApi';
+import { INewUser, INewPost, IUpdatePost, IUpdateUser } from '@/types';
+import { getUsers, getInfiniteUsers, updateUser } from '../appwrite/usersApi';
 
 export const useCreateUserAccount = () => {
   return useMutation({
@@ -194,7 +194,6 @@ export const useGetPosts = () => {
       const lastId = lastPage?.documents[lastPage?.documents?.length - 1].$id;
       return lastId;
     },
-    
   });
 };
 
@@ -235,6 +234,22 @@ export const useGetInfiniteUsers = () => {
       if (lastPage && lastPage.documents.length === 0) return null;
       const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id;
       return lastId;
+    },
+  });
+};
+
+export const useUpdateUser = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (user: IUpdateUser) => updateUser(user),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_CURRENT_USER, data?.id],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_USERS],
+      });
     },
   });
 };

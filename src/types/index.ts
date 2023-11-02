@@ -10,9 +10,19 @@ export type IUser = {
   name: string;
   username: string;
   email: string;
-  imageUrl: string;
+  imageUrl: URL | string;
   bio: string;
 };
+
+export type IUpdateUser = {
+  id: string,
+  name: string;
+  file: File[];
+  username: string;
+  email: string;
+  imageUrl: URL | string;
+  bio: string;
+}
 
 export type IContextType = {
   user: IUser;
