@@ -11,6 +11,7 @@ export type IUser = {
   username: string;
   email: string;
   imageUrl: URL | string;
+  imageId: string,
   bio: string;
 };
 
@@ -21,6 +22,7 @@ export type IUpdateUser = {
   username: string;
   email: string;
   imageUrl: URL | string;
+  imageId: string,
   bio: string;
 }
 

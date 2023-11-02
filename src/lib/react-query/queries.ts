@@ -27,7 +27,12 @@ import {
 
 import { QUERY_KEYS } from './queryKeys';
 import { INewUser, INewPost, IUpdatePost, IUpdateUser } from '@/types';
-import { getUsers, getInfiniteUsers, updateUser } from '../appwrite/usersApi';
+import {
+  getUsers,
+  getInfiniteUsers,
+  updateUser,
+  getUserById,
+} from '../appwrite/usersApi';
 
 export const useCreateUserAccount = () => {
   return useMutation({
@@ -218,6 +223,14 @@ export const useGetSavedPosts = () => {
 };
 
 // ======================== USERS =========================
+
+export const useGetUserById = (userId: string) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_USER_BY_ID],
+    queryFn: () => getUserById(userId),
+    enabled: !!userId,
+  });
+};
 
 export const useGetUsers = (limit?: number) => {
   return useQuery({

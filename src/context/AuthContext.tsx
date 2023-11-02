@@ -10,6 +10,7 @@ export const INITIAL_USER = {
   username: '',
   email: '',
   imageUrl: '',
+  imageId: '',
   bio: '',
 };
 
@@ -39,6 +40,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           name: current.name,
           username: current.username,
           email: current.email,
+          imageId: current.imageId,
           imageUrl: current.imageUrl,
           bio: current.bio,
         });
@@ -61,6 +63,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           username: current.username,
           email: current.email,
           imageUrl: current.imageUrl,
+          imageId: current.imageId,
           bio: current.bio,
         });
         setIsAuthenticated(true);

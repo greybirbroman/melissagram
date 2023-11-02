@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { FileWithPath, useDropzone } from 'react-dropzone';
-import { Button } from '../ui/button';
+import UserAvatar from './UserAvatar';
 
 interface AvatarUploaderProps {
   fieldChange: (FILES: File[]) => void;
@@ -36,14 +36,8 @@ const AvatarUploader = ({ fieldChange, mediaUrl }: AvatarUploaderProps) => {
         // ----------------------------    При наличии файла
         <>
           <div className='flex flex-1 items-center gap-5 w-full p-5 lg:p-10'>
-            <img
-              src={fileUrl}
-              alt='User Avatar, Image'
-              className='w-[100px] h-[100px] object-cover object-top rounded-full'
-            />
-          <span className='text-[#0095F6]'>
-            Click or drag photo to edit
-          </span>
+            <UserAvatar size='medium' imageUrl={fileUrl} />
+            <span className='text-[#0095F6]'>Click or drag photo to edit</span>
           </div>
         </>
       )}

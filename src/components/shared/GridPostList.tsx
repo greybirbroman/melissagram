@@ -9,6 +9,7 @@ type GridPostListProps = {
   showUser?: boolean;
   showStats?: boolean;
   isSaved?: boolean;
+  title?: string
 };
 
 const GridPostList = ({
@@ -16,10 +17,13 @@ const GridPostList = ({
   showUser = true,
   showStats = true,
   isSaved = false,
+  title,
 }: GridPostListProps) => {
   const { user } = useUserContext();
 
   return (
+    <>
+   {title &&  <h3 className='body-bold md:h3-bold'>{title}</h3>}
     <ul className='grid-container'>
       {posts.map(
         (post) =>
@@ -63,6 +67,7 @@ const GridPostList = ({
           )
       )}
     </ul>
+    </>
   );
 };
 

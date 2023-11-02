@@ -46,6 +46,7 @@ const UpdateProfileFrom = () => {
         ...values,
         id: user.id,
         imageUrl: user.imageUrl,
+        imageId: user.imageId,
       });
       if (!updatedUser) {
         toast({ title: 'Updating error... Please try again.' });

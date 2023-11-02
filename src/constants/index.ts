@@ -12,6 +12,24 @@ const deleteIconObj = {
   alt: 'Delete Post, Icon'
 }
 
+export const profileDynamicPosts = [
+  {
+    value: 'all',
+    tabIcon: '/assets/icons/posts.svg',
+    iconAlt: 'All Posts, icon',
+  },
+  {
+    value: 'liked',
+    tabIcon: '/assets/icons/like.svg',
+    iconAlt: 'Liked Posts, icon',
+  },
+  {
+    value: 'saved',
+    tabIcon: '/assets/icons/save.svg',
+    iconAlt: 'Saved Posts, icon',
+  },
+];
+
 export const sidebarLinks = [
   {
     imgURL: '/assets/icons/home.svg',

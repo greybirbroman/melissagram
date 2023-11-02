@@ -45,12 +45,30 @@ export async function getUsers(limit?: number) {
   }
 }
 
+export async function getUserById(userId: string) {
+  try {
+    const currentUser = await databases.getDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      userId
+    );
+
+    if (!currentUser) throw Error;
+
+    return currentUser;
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function updateUser(user: IUpdateUser) {
   const hasFileToUpdate = user.file.length > 0;
 
   try {
     let image = {
       imageUrl: user.imageUrl,
+      imageId: user.imageId,
     };
 
     if (hasFileToUpdate) {
@@ -64,7 +82,7 @@ export async function updateUser(user: IUpdateUser) {
         await deleteFile(uploadedFile.$id);
         throw Error;
       }
-      image = { ...image, imageUrl: fileUrl };
+      image = { ...image, imageUrl: fileUrl, imageId: uploadedFile.$id };
     }
     const updatedUser = await databases.updateDocument(
       appwriteConfig.databaseId,
@@ -76,6 +94,7 @@ export async function updateUser(user: IUpdateUser) {
         email: user.email,
         bio: user.bio,
         imageUrl: image.imageUrl,
+        imageId: image.imageId,
       }
     );
 
