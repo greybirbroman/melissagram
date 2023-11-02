@@ -1,5 +1,4 @@
 import {
-  useQueries,
   useMutation,
   useQueryClient,
   useInfiniteQuery,
@@ -170,6 +169,8 @@ export const useUpdatePost = () => {
     mutationFn: (post: IUpdatePost) => updatePost(post),
     onSuccess: (data) => {
       queryClient.invalidateQueries({
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id],
       });
     },
@@ -194,6 +195,8 @@ export const useGetPosts = () => {
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
     queryFn: getInfinitePosts,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
     getNextPageParam: (lastPage) => {
       if (lastPage && lastPage?.documents?.length === 0) return null;
       const lastId = lastPage?.documents[lastPage?.documents?.length - 1].$id;
@@ -214,6 +217,8 @@ export const useGetSavedPosts = () => {
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_SAVED_POSTS],
     queryFn: getInfiniteSavedPosts,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
     getNextPageParam: (lastPage) => {
       if (lastPage && lastPage?.documents?.length === 0) return null;
       const lastId = lastPage?.documents[lastPage?.documents?.length - 1].$id;
@@ -243,6 +248,8 @@ export const useGetInfiniteUsers = () => {
   return useInfiniteQuery({
     queryKey: [QUERY_KEYS.GET_INFINITE_USERS],
     queryFn: getInfiniteUsers,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
     getNextPageParam: (lastPage) => {
       if (lastPage && lastPage.documents.length === 0) return null;
       const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id;

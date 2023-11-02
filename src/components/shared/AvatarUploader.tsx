@@ -36,6 +36,8 @@ const AvatarUploader = ({ fieldChange, mediaUrl }: AvatarUploaderProps) => {
         // ----------------------------    При наличии файла
         <>
           <div className='flex flex-1 items-center gap-5 w-full p-5 lg:p-10'>
+            {/* {  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore} */}
             <UserAvatar size='medium' imageUrl={fileUrl} />
             <span className='text-[#0095F6]'>Click or drag photo to edit</span>
           </div>

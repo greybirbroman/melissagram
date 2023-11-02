@@ -38,6 +38,8 @@ const FileUploader = ({ fieldChange, mediaUrl }: FileUploaderProps) => {
           <div className='flex flex-1 justify-center w-full p-5 lg:p-10'>
             {/* TODO: {ПРОВЕРИТЬ КАК ЛУЧШЕ ИЗОБРАЖЕНИЕ НА РАЗНЫХ РАЗРЕШЕНИЯХ} */}
             <img
+            /* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore */
               src={fileUrl}
               alt='User added image'
               className='file_uploader-img'

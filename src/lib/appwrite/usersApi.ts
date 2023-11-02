@@ -4,6 +4,7 @@ import { IUpdateUser } from '@/types';
 import { deleteFile, uploadFile, getFilePreview } from './postsApi';
 
 export async function getInfiniteUsers({ pageParam }: { pageParam: number }) {
+   
     const queries: any[] = [Query.orderDesc('$createdAt'), Query.limit(12)];
   
     if (pageParam) {

@@ -17,7 +17,7 @@ export type IUser = {
 
 export type IUpdateUser = {
   id: string,
-  name: string;
+  name?: string;
   file: File[];
   username: string;
   email: string;

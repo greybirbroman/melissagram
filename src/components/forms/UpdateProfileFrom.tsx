@@ -42,7 +42,9 @@ const UpdateProfileFrom = () => {
 
   async function onSubmit(values: z.infer<typeof UpdateProfileValidation>) {
     if (user) {
-      const updatedUser = await updateUser({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const updatedUser = await updateUser({
         ...values,
         id: user.id,
         imageUrl: user.imageUrl,

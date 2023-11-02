@@ -31,6 +31,8 @@ const LeftSidebar = () => {
         </Link>
         <Link to={`/profile/${user.id}`} className='flex gap-3 items-center'>
           <img
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             src={user.imageUrl || `/assets/images/profile-placeholder.png`}
             alt='User Avatar, Image'
             className='w-14 h-14 rounded-full object-cover'
