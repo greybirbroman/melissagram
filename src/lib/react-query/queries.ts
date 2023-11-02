@@ -18,6 +18,7 @@ import {
   savePost,
   deleteSavedPost,
   getPostById,
+  getInfiniteSavedPosts,
   updatePost,
   deletePost,
   getInfinitePosts,
@@ -115,7 +116,13 @@ export const useSavePost = () => {
         queryKey: [QUERY_KEYS.GET_POSTS],
       });
       queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
+      });
+      queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_SAVED_POSTS],
       });
     },
   });
@@ -135,6 +142,9 @@ export const useDeleteSavedPost = () => {
       });
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.GET_SAVED_POSTS],
       });
     },
   });
@@ -180,11 +190,11 @@ export const useGetPosts = () => {
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
     queryFn: getInfinitePosts,
     getNextPageParam: (lastPage) => {
-      if (lastPage && lastPage.documents.length === 0) return null;
-
-      const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id;
+      if (lastPage && lastPage?.documents?.length === 0) return null;
+      const lastId = lastPage?.documents[lastPage?.documents?.length - 1].$id;
       return lastId;
     },
+    
   });
 };
 
@@ -193,6 +203,18 @@ export const useSearchPosts = (searchQuery: string) => {
     queryKey: [QUERY_KEYS.SEARCH_POSTS, searchQuery],
     queryFn: () => searchPosts(searchQuery),
     enabled: !!searchQuery,
+  });
+};
+
+export const useGetSavedPosts = () => {
+  return useInfiniteQuery({
+    queryKey: [QUERY_KEYS.GET_SAVED_POSTS],
+    queryFn: getInfiniteSavedPosts,
+    getNextPageParam: (lastPage) => {
+      if (lastPage && lastPage?.documents?.length === 0) return null;
+      const lastId = lastPage?.documents[lastPage?.documents?.length - 1].$id;
+      return lastId;
+    },
   });
 };
 

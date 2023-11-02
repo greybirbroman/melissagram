@@ -1,0 +1,112 @@
+{
+  "film": {
+    "id": 1239664,
+    "displayTitle": "Вторжение",
+    "posterBaseUrl": "//avatars.mds.yandex.net/get-kinopoisk-image/1629390/33312be3-57e3-4085-8b83-213087af4964",
+    "duration": "1&nbsp;час",
+    "genres": ["фантастика", "фэнтези", "драма"],
+    "year": "2021 – 2021",
+    "ratings": {
+      "currentRating": "kp",
+      "expectations": {
+        "count": 1245,
+        "type": "positive",
+        "value": "99%",
+        "ready": true
+      },
+      "kp": {
+        "count": 7580,
+        "type": "neutral",
+        "ready": true,
+        "value": "6.1"
+      }
+    },
+    "actors": [
+      {
+        "id": 535404,
+        "name": "Голшифте Фарахани",
+        "originalName": "Golshifteh Farahani",
+        "role": "actor",
+        "roleDetails": "Aneesha Malik",
+        "image": {
+          "baseUrl": "//avatars.mds.yandex.net/get-kinopoisk-image/1777765/b41abc39-8cf3-4d61-b899-e7a63cabdfb5",
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/b41abc39-8cf3-4d61-b899-e7a63cabdfb5/360"
+        },
+        "contextData": {
+          "inFolders": false
+        }
+      },
+      {
+        "id": 1759940,
+        "name": "Сиори Куцуна",
+        "originalName": "Shiori Kutsuna",
+        "role": "actor",
+        "roleDetails": "Mitsuki Yamato",
+        "image": {
+          "baseUrl": "//avatars.mds.yandex.net/get-kinopoisk-image/1704946/c1f4d218-0194-497c-ace8-0d0eff4b1b64",
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/c1f4d218-0194-497c-ace8-0d0eff4b1b64/360"
+        },
+        "contextData": {
+          "inFolders": false
+        }
+      },
+      {
+        "id": 2045567,
+        "name": "Шамир Андерсон",
+        "originalName": "Shamier Anderson",
+        "role": "actor",
+        "roleDetails": "Trevante Cole",
+        "image": {
+          "baseUrl": "//avatars.mds.yandex.net/get-kinopoisk-image/4486454/d429ef43-17ae-4992-b23f-5ccf9b257f57",
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4486454/d429ef43-17ae-4992-b23f-5ccf9b257f57/360"
+        },
+        "contextData": {
+          "inFolders": false
+        }
+      }
+    ],
+    "directors": [
+      {
+        "id": 3421317,
+        "name": "Аманда Марсалис",
+        "originalName": "Amanda Marsalis",
+        "role": "director",
+        "image": {
+          "baseUrl": "//avatars.mds.yandex.net/get-kinopoisk-image/4774061/a4831d38-6030-4f14-b6a5-eaab64cd3157",
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/a4831d38-6030-4f14-b6a5-eaab64cd3157/360"
+        },
+        "contextData": {
+          "inFolders": false
+        }
+      },
+      {
+        "id": 805941,
+        "name": "Якоб Вербрюгген",
+        "originalName": "Jakob Verbruggen",
+        "role": "director",
+        "image": {
+          "baseUrl": "//avatars.mds.yandex.net/get-kinopoisk-image/1777765/555e8e8a-34df-42ff-9939-2ee86f6319b4",
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/555e8e8a-34df-42ff-9939-2ee86f6319b4/360"
+        },
+        "contextData": {
+          "inFolders": false
+        }
+      },
+      {
+        "id": 612508,
+        "name": "Алик Сахаров",
+        "originalName": "Alik Sakharov",
+        "role": "director",
+        "image": {
+          "baseUrl": "//avatars.mds.yandex.net/get-kinopoisk-image/1704946/7331294c-466b-4e97-8f36-e483f01c6123",
+          "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/7331294c-466b-4e97-8f36-e483f01c6123/360"
+        },
+        "contextData": {
+          "inFolders": false
+        }
+      }
+    ],
+    "relativeUrl": "/film/1239664/",
+    "countries": ["США"]
+  }
+}

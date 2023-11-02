@@ -66,7 +66,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
 
   return (
     <div className='flex justify-between items-center z-20 gap-3'>
-      <div className='flex gap-1 mt-5'>
+      <div className='flex gap-1'>
         <img
           src={checkIsLiked(likes, userId) ? liked : notLiked}
           alt='Like, Icon'
@@ -79,7 +79,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
         />
         <span className='small-medium lg:base-medium'>{likes.length}</span>
       </div>
-      <div className='flex gap-2 mt-5'>
+      <div className='flex gap-2'>
         {isSavingPost || isDeletingSavedPost ? (
           <Loader />
         ) : (

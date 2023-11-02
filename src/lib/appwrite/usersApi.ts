@@ -24,7 +24,7 @@ export async function getInfiniteUsers({ pageParam }: { pageParam: number }) {
   }
 
 export async function getUsers(limit?: number) {
-  const queries: any[] = [Query.orderDesc('$createdAt')];
+  const queries: any[] = [Query.orderDesc('$createdAt'), Query.limit(10)];
 
   if (limit) {
     queries.push(Query.limit(limit));

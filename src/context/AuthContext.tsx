@@ -34,6 +34,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       //setIsLoading(true);
       const current = await getCurrentUser();
+      // console.log(current)
 
       if (current) {
         setUser({

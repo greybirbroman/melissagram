@@ -266,6 +266,30 @@ export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
   }
 }
 
+export async function getInfiniteSavedPosts({
+  pageParam,
+}: {
+  pageParam: number;
+}) {
+  const queries: any[] = [Query.orderDesc('$updatedAt'), Query.limit(12)];
+
+  if (pageParam) {
+    queries.push(Query.cursorAfter(pageParam.toString()));
+  }
+
+  try {
+    const saved = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.savesCollectionId,
+      queries
+    );
+    if (!saved) throw Error;
+    return saved;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function searchPosts(searchQuery: string) {
   try {
     const posts = await databases.listDocuments(
