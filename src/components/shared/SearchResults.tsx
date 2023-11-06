@@ -2,8 +2,13 @@ import { Models } from 'appwrite';
 import Loader from './Loader';
 import GridPostList from './GridPostList';
 
+type TypeSearchedPosts = {
+  documents: Models.Document[]
+  total: number,
+}
+
 type SearchResultsProps = {
-  searchedPosts: Models.Document[];
+  searchedPosts: TypeSearchedPosts;
   isSearchFetching: boolean;
 };
 

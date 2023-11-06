@@ -15,6 +15,7 @@ import { useForm } from 'react-hook-form';
 import { useToast } from '@/components/ui/use-toast';
 import { SignupValidation } from '@/lib/validation';
 import Loader from '@/components/shared/Loader';
+import { INewUser } from '@/types';
 import {
   useCreateUserAccount,
   useSignInAccount,
@@ -24,10 +25,10 @@ import { useUserContext } from '@/context/AuthContext';
 const SignupForm = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const { checkAuthUser } = useUserContext();
   const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
     useCreateUserAccount();
-  const { mutateAsync: signInAccount, isPending: isSigningIn } =
+  const { mutateAsync: signInAccount } =
     useSignInAccount();
 
   const form = useForm<z.infer<typeof SignupValidation>>({
@@ -41,7 +42,7 @@ const SignupForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
-    const newUser = await createUserAccount(values);
+    const newUser = await createUserAccount(values as INewUser);
     
     if (!newUser) {
       return toast({

@@ -51,10 +51,10 @@ export type INewPost = {
 
 export type IUpdatePost = {
   postId: string,
-  caption: string;
+  caption?: string;
   imageId: string,
   imageUrl: URL,
-  file: File[];
+  file?: File[];
   location?: string;
   tags?: string;
 };

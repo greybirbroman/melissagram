@@ -20,6 +20,7 @@ import { useUserContext } from '@/context/AuthContext';
 import { useToast } from '../ui/use-toast';
 import { useCreatePost, useUpdatePost } from '@/lib/react-query/queries';
 import { POSTS } from '@/constants/routes';
+import { INewPost } from '@/types';
 
 type PostFormProps = {
   post?: Models.Document;
@@ -60,7 +61,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
       return navigate(`/${POSTS}/${post.$id}`);
     }
     const newPost = await createPost({
-      ...values,
+      ...values as INewPost,
       userId: user.id,
     });
     if (!newPost) {
