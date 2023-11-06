@@ -10,7 +10,7 @@ export type IUser = {
   name: string;
   username: string;
   email: string;
-  imageUrl: URL | string;
+  imageUrl: string;
   imageId: string,
   bio: string;
 };
